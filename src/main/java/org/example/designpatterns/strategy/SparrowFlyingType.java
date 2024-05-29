@@ -4,8 +4,8 @@ import lombok.ToString;
 
 @ToString
 public class SparrowFlyingType implements FlyStrategy {
-    @Override
-    public String getFlyingType() {
-        return "Low Altitude";
-    }
+  @Override
+  public String getFlyingType() {
+    return "Low Altitude";
+  }
 }

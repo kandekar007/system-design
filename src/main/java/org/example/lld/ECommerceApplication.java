@@ -1,4 +1,3 @@
 package org.example.lld;
 
-public class ECommerceApplication {
-}
+public class ECommerceApplication {}

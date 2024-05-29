@@ -1,4 +1,3 @@
 package org.example.lld;
 
-public class ATMSystem {
-}
+public class ATMSystem {}

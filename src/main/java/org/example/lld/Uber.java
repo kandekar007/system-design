@@ -1,4 +1,3 @@
 package org.example.lld;
 
-public class Uber {
-}
+public class Uber {}
