@@ -40,10 +40,16 @@ public class Main {
     System.out.println(observer2);
   }
 
+  public static void factory() {}
+
   public static void main(String[] args) {
-    System.out.println("\tStrategy Design Pattern");
+    System.out.println("\n\tStrategy Design Pattern");
     strategy();
-    System.out.println("\tObserver Design Pattern");
+
+    System.out.println("\n\tObserver Design Pattern");
     observer();
+
+    System.out.println("\n\tFactory Design Pattern");
+    factory();
   }
 }
