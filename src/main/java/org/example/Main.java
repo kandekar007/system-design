@@ -20,8 +20,8 @@ public class Main {
   }
 
   public static void observer() {
-    Object oldNews = "News old";
-    Object newNews = "News new";
+    String oldNews = "News old";
+    String newNews = "News new";
 
     NewsAgency observable = new NewsAgency();
     NewsChannel1 observer1 = new NewsChannel1();
@@ -30,12 +30,12 @@ public class Main {
     observable.addObserver(observer1);
     observable.addObserver(observer2);
 
-    observable.setNews((String) oldNews);
+    observable.setNews(oldNews);
     System.out.println(observer1);
     System.out.println(observer2);
 
     observable.removeObserver(observer2);
-    observable.setNews((String) newNews);
+    observable.setNews(newNews);
     System.out.println(observer1);
     System.out.println(observer2);
   }
