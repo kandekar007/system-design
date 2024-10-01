@@ -43,13 +43,13 @@ class ParkingLot {
 
       // Test deallocation and payment
       if (alloted) {
-        Double amount = service.deallocateVehicle(vehicle, PaymentMode.CASH);
+        Double amount = service.deallocateVehicle(vehicle, RestaurantPaymentMode.CASH);
         System.out.println("Deallocation amount for car: " + amount);
         service.pay(vehicle);
       }
 
       if (alloted2) {
-        Double amount = service.deallocateVehicle(vehicle2, PaymentMode.ONLINE);
+        Double amount = service.deallocateVehicle(vehicle2, RestaurantPaymentMode.ONLINE);
         System.out.println("Deallocation amount for bike: " + amount);
         service.pay(vehicle2);
       }
@@ -64,7 +64,7 @@ class ParkingLotService {
   PaymentStrategy cashStrategy = new CashStrategy();
   PaymentStrategy onlineStrategy = new OnlineStrategy();
 
-  public PaymentStrategy decideStrategy(PaymentMode mode) {
+  public PaymentStrategy decideStrategy(RestaurantPaymentMode mode) {
     switch (mode) {
       case CASH:
         return cashStrategy;
@@ -101,7 +101,7 @@ class ParkingLotService {
     return true;
   }
 
-  public Double deallocateVehicle(Vehicle vehicle, PaymentMode mode) {
+  public Double deallocateVehicle(Vehicle vehicle, RestaurantPaymentMode mode) {
     final Date currentDate = new Date(); // Use current date instead of hardcoded future date
     vehicle.setEndDateTime(currentDate);
 
@@ -293,21 +293,21 @@ enum PaymentMode {
 class PaymentDetails {
   public String id;
   private String txId;
-  private PaymentMode mode;
+  private RestaurantPaymentMode mode;
   private Double amount;
-  private PaymentStatus status;
+  private RestaurantPaymentStatus status;
 
-  PaymentDetails(String txId, PaymentMode mode, Double amount) {
+  PaymentDetails(String txId, RestaurantPaymentMode mode, Double amount) {
     this.id = UUID.randomUUID().toString();
     this.txId = txId;
     this.mode = mode;
     this.amount = amount;
-    this.status = PaymentStatus.PENDING;
+    this.status = RestaurantPaymentStatus.PENDING;
   }
 
   PaymentDetails() {
     this.id = UUID.randomUUID().toString();
-    this.status = PaymentStatus.PENDING;
+    this.status = RestaurantPaymentStatus.PENDING;
   }
 }
 
@@ -322,7 +322,7 @@ class CashStrategy implements PaymentStrategy {
   public void pay(Vehicle vehicle) {
     PaymentDetails paymentDetails = vehicle.getPaymentDetails();
     paymentDetails.setTxId(UUID.randomUUID().toString());
-    paymentDetails.setStatus(PaymentStatus.COMPLETED);
+    paymentDetails.setStatus(RestaurantPaymentStatus.COMPLETED);
   }
 
   @Override
@@ -332,7 +332,7 @@ class CashStrategy implements PaymentStrategy {
 
     Double amount = hours * vehicle.getSpotType().getRatePerHour();
     vehicle.getPaymentDetails().setAmount(amount);
-    vehicle.getPaymentDetails().setMode(PaymentMode.CASH);
+    vehicle.getPaymentDetails().setMode(RestaurantPaymentMode.CASH);
   }
 }
 
@@ -343,7 +343,7 @@ class OnlineStrategy implements PaymentStrategy {
   public void pay(Vehicle vehicle) {
     PaymentDetails paymentDetails = vehicle.getPaymentDetails();
     paymentDetails.setTxId(UUID.randomUUID().toString());
-    paymentDetails.setStatus(PaymentStatus.COMPLETED);
+    paymentDetails.setStatus(RestaurantPaymentStatus.COMPLETED);
   }
 
   @Override
@@ -353,6 +353,6 @@ class OnlineStrategy implements PaymentStrategy {
 
     Double amount = hours * vehicle.getSpotType().getRatePerHour() + ADHOC;
     vehicle.getPaymentDetails().setAmount(amount);
-    vehicle.getPaymentDetails().setMode(PaymentMode.ONLINE);
+    vehicle.getPaymentDetails().setMode(RestaurantPaymentMode.ONLINE);
   }
 }
