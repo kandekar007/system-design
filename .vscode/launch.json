@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Solution",
+            "request": "launch",
+            "mainClass": "org.example.lld.bookmyshow.Solution",
+            "projectName": "test"
+        },
+        {
+            "type": "java",
+            "name": "Solution",
+            "request": "launch",
+            "mainClass": "org.example.lld.Solution",
+            "projectName": "test"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "org.example.Main",
+            "projectName": "test"
+        },
+        {
+            "type": "java",
+            "name": "FactoryPatternMain",
+            "request": "launch",
+            "mainClass": "org.example.designpatterns.factory.FactoryPatternMain",
+            "projectName": "test"
+        },
+        {
+            "type": "java",
+            "name": "BookMyShow",
+            "request": "launch",
+            "mainClass": "org.example.lld.BookMyShow",
+            "projectName": "test"
+        }
+    ]
+}
