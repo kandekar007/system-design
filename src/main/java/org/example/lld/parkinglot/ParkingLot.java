@@ -295,19 +295,19 @@ class PaymentDetails {
   private String txId;
   private PaymentMode mode;
   private Double amount;
-  private RestaurantPaymentStatus status;
+  private PaymentStatus status;
 
   PaymentDetails(String txId, PaymentMode mode, Double amount) {
     this.id = UUID.randomUUID().toString();
     this.txId = txId;
     this.mode = mode;
     this.amount = amount;
-    this.status = RestaurantPaymentStatus.PENDING;
+    this.status = PaymentStatus.PENDING;
   }
 
   PaymentDetails() {
     this.id = UUID.randomUUID().toString();
-    this.status = RestaurantPaymentStatus.PENDING;
+    this.status = PaymentStatus.PENDING;
   }
 }
 
@@ -322,7 +322,7 @@ class CashStrategy implements PaymentStrategy {
   public void pay(Vehicle vehicle) {
     PaymentDetails paymentDetails = vehicle.getPaymentDetails();
     paymentDetails.setTxId(UUID.randomUUID().toString());
-    paymentDetails.setStatus(RestaurantPaymentStatus.COMPLETED);
+    paymentDetails.setStatus(PaymentStatus.COMPLETED);
   }
 
   @Override
@@ -343,7 +343,7 @@ class OnlineStrategy implements PaymentStrategy {
   public void pay(Vehicle vehicle) {
     PaymentDetails paymentDetails = vehicle.getPaymentDetails();
     paymentDetails.setTxId(UUID.randomUUID().toString());
-    paymentDetails.setStatus(RestaurantPaymentStatus.COMPLETED);
+    paymentDetails.setStatus(PaymentStatus.COMPLETED);
   }
 
   @Override
