@@ -3,6 +3,8 @@ package org.example.lld;
 import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.lld.restaurantSystem.RestaurantPaymentMode;
+import org.example.lld.restaurantSystem.RestaurantPaymentStatus;
 
 @Getter
 @Setter
