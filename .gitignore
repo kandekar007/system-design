@@ -1,8 +1,9 @@
 target/
-.classpath
-.project
+.classpath/
+.project/
 .settings/
 .idea/
+.vscode/
 
 test/tmp/
 test/bin
